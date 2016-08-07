@@ -9,7 +9,7 @@ services:
 
 before_install:
   - docker build -t peter/dynamodb dynamodb
-  - docker run -d -P peter/dynamodb -n db
+  - docker run -d -P peter/dynamodb --name db
   - docker ps
 
 script:
