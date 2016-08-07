@@ -1,0 +1,16 @@
+sudo: required
+
+language: python
+python:
+  - "2.7"
+
+services:
+  - docker
+
+before_install:
+  - docker build -t peter/dynamodb dynamodb
+  - docker run -d -P peter/dynamodb -n db
+  - docker ps
+
+script:
+  - docker exec db python -c 'print "hello world"'
